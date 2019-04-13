@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+            定义bean的生命始末方法：自定义方法参与到Spring创建和销毁对象的过程中。
+                1）在java类中定义方法，方法原型：public void 方法名自定义的(无参数){。。。}
+                2）在定义bean对象的时候，告诉Spring两个方法的存在
+                    <bean id="xx" class="yyy" init-method="bean的初始化的方法名"
+                                              destory-method="bean的销毁之前执行的方法名">
+    -->
+
+    <bean id="someService" class="com.wangzhao.ba03.SomeServiceImpl" init-method="setUp"
+                                                                     destroy-method="tearDawn"></bean>
+
+</beans> 

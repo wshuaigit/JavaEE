@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- byType -->
+    <bean id="myStudent" class="com.wangzhao.di07.Student" autowire="byType">
+        <property name="name" value="张三"/>
+        <property name="age" value="20"/>
+        <!--<property name="school" ref="mySchool"/>-->
+    </bean>
+
+    <bean id="mySchool" class="com.wangzhao.di07.School">
+        <property name="name" value="西安邮电"></property>
+        <property name="address" value="西安"></property>
+    </bean>
+    
+</beans>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+       <!-- 指定属性配置文件的位置
+            location:指定属性配置文件的位置，使用classpath:表示类路径
+       -->
+        <context:property-placeholder location="classpath:jdbc.properties"/>
+
+        <!-- 声明数据源DataSource,使用dbcp -->
+        <bean id="myDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+            <!-- 使用属性配置文件中的数据，语法格式：${key}-->
+            <property name="driverClassName" value="${jdbc.driver}"/>
+            <property name="url" value="${jdbc.url}"/>
+            <property name="username" value="${jdbc.username}"/>
+            <property name="password" value="${jdbc.password}"/>
+        </bean>
+
+       <!-- 声明SqlSessionFactoryBean,创建SqlSessionFactory -->
+        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+            <!-- 指定数据源DataSource -->
+            <property name="dataSource" ref="myDataSource"/>
+            <!-- 指定mybatis的主配置文件
+                 Resource类型，赋值使用value,Spring会读取文件，转为Resource
+                 classpath:指定到类路径中找配置文件
+            -->
+            <property name="configLocation" value="classpath:mybatis.xml"/>
+        </bean>
+
+       <!-- 声明mybatis的扫描器对象，创建Dao接口的是实现类对象 -->
+       <!--
+            1.通过SqlSessionFactoryBeanName,能获取到SqlSessionFactory
+            2.通过SqlSessionFactory.openSession()，能得到SqlSession对象
+            for(接口 : com.wangzhao.dao所有接口){
+                接口的实现类对象 = 使用sqlSession.getMapper(接口.class);
+                把创建好的对象放入到Spring的容器中，springMap.put(接口的首字母小写，接口的实现类对象)
+            }
+       -->
+       <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+           <!-- 指定SqlSessionFactory对象 -->
+           <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+           <!-- 指定Dao接口的包名 -->
+            <property name="basePackage" value="com.wangzhao.dao"/>
+       </bean>
+
+       <!-- 声明Service对象 -->
+       <bean id="studentService" class="com.wangzhao.service.StudentServiceImpl">
+           <property name="stuDao" ref="studentDao"/>
+       </bean>
+</beans> 

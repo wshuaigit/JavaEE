@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+            声明bean对象：java对象
+            id:自定义对象名称，必须是唯一值。对象名称命名规则同变量
+            class:全限定类名（不能是接口）
+
+            <bean>的作用等同于：
+            SomeService someService = new SomeServiceImpl();
+
+    -->
+    <bean id="someService" class="com.wangzhao.service.SomeServiceImpl"></bean>
+</beans> 

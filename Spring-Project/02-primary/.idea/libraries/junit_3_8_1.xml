@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="junit-3.8.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/junit-3.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-context-4.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-core-4.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-expression-4.1.6.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+            设值注入：调用类中的set方法完成属性赋值
+                    引用类型的设值注入
+                        语法1：使用ref作为属性
+                            <bean id="xxx" class="yyy">
+                                <property name="属性名" ref="bean的id" />
+                            </bean>
+
+                        语法2：使用ref作为子标签
+                             <bean id="xxx" class="yyy">
+                                <property name="属性名">
+                                    <ref bean="bean的id"/>
+                                </ property>
+                            </bean>
+    -->
+
+    <!-- 使用语法1，给引用类型赋值，ref作为属性 -->
+    <bean id="myStudent" class="com.wangzhao.di02.Student">
+        <!-- 设值注入 -->
+        <property name="name" value="张三"/> <!-- setName("张三") -->
+        <property name="age" value="20"/>   <!-- setAge(20) -->
+        <!-- 引用类型的设值注入-->
+        <property name="school" ref="mySchool"/> <!--setSchool(mySchool)-->
+    </bean>
+
+    <!-- 使用语法2，ref作为子标签-->
+    <bean id="myStudent2" class="com.wangzhao.di02.Student">
+        <!-- 设值注入 -->
+        <property name="name" value="李四"/> <!-- setName("张三") -->
+        <property name="age" value="22"/>   <!-- setAge(20) -->
+        <!-- 引用类型的设值注入-->
+        <property name="school">
+           <ref bean="mySchool"></ref>
+        </property>
+    </bean>
+
+    <bean id="mySchool" class="com.wangzhao.di02.School">
+        <property name="name" value="西安邮电"/>
+        <property name="address" value="西安"/>
+    </bean>
+    
+</beans> 

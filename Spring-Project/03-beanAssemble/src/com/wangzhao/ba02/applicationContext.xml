@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+         指定bean对象的作用域：作用域对象的存在范围和可见性
+         1. singleton: 单例，在spring容器中对象只有一个，默认值。
+                       如何指定单例：
+                       <bean id="xx" class="yyy" scope="singleton">
+
+         2.prototype:原型，每次使用getBean()都将获取到一个新的对象
+                      如何指定单例：
+                       <bean id="xx" class="yyy" scope="prototype">
+    -->
+    <!--单例-->
+    <bean id="someService" class="com.wangzhao.ba02.SomeServiceImpl" scope="singleton"></bean>
+
+    <!--原型-->
+    <bean id="someService2" class="com.wangzhao.ba02.SomeServiceImpl" scope="prototype"></bean>
+
+</beans> 

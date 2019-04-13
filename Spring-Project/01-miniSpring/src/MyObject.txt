@@ -1,0 +1,3 @@
+service=com.wangzhao.service.UserServiceImpl
+myUserMySQLDao=com.wangzhao.dao.UserDaoMySQLImpl
+service#userDao=myUserMySQLDao

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <!--
+              引用类型的自动注入：有框架给引用类型完成赋值，赋值的方式主要有byName,byType
+                    1、byName(按名称注入)：java类中引用类型的属性名和Spring容器（XML配置文件）中<bean>的id名称一样
+                        且数据类型是一致的，这样的bean对象能够赋值给引用类型
+
+                    指定byName注入：
+                    <bean id="xx" class="yyy" autowire="byName">
+                    </bean>
+
+                    2、byType(按类型注入)：java类中引用类型的数据类型和Spring容器（XML配置文件）中<bean>的class属性值是
+                                           同源关系的，这样的bean可以赋值给引用类型
+              同源关系：
+                    1.java类中引用类型的数据类型和<bean>的class是一样的
+                    2.java类中引用类型的数据类型和<bean>的class是父类和子类的关系
+                    3.java类中引用类型的数据类型和<bean>的class是接口和实现类关系
+        -->
+
+    <!-- byType -->
+    <bean id="myStudent" class="com.wangzhao.di06.Student" autowire="byType">
+        <property name="name" value="张三"/>
+        <property name="age" value="20"/>
+        <!--<property name="school" ref="mySchool"/>-->
+    </bean>
+
+    <bean id="mySchool" class="com.wangzhao.di06.School">
+        <property name="name" value="西安邮电"></property>
+        <property name="address" value="西安"></property>
+    </bean>
+
+</beans>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <!--
+                给具有集合属性的对象赋值
+                什么类型的属性，就用什么类型的子标签
+                集合中是简单类型就用value,是对象类型就用ref
+        -->
+        <bean id="Collection" class="com.wangzhao.di04.MyCollections">
+           <!-- String[]-->
+            <property name="myArray">
+                <array>
+                    <value>陕西</value>
+                    <value>西安</value>
+                </array>
+            </property>
+
+           <!-- Set<String>-->
+            <property name="mySet">
+                <set>
+                    <value>北极</value>
+                    <value>南极</value>
+                </set>
+            </property>
+
+            <!--List<Student>-->
+            <property name="myList">
+                <list>
+                    <ref bean="myStudent"/>
+                </list>
+            </property>
+
+            <!--Map<String,Integer>-->
+            <property name="myMap">
+                <map>
+                    <!--<entry key-ref="" value-ref=""></entry>-->
+                    <entry key="age" value="20"></entry>
+                </map>
+            </property>
+
+            <!--Properties-->
+            <property name="myProp">
+                <props>
+                    <prop key="tel">18191232548</prop> <!--key-value-->
+                </props>
+            </property>
+
+            <!-- List<Map<String,String>>-->
+            <property name="myListMap">
+                <list>
+                    <map> <!-- 0 -->
+                        <entry key="weight" value="60kg"></entry>
+                        <entry key="height" value="173cm"></entry>
+                    </map>
+                    <map> <!-- 1 -->
+                        <entry key="tel" value="123456"></entry>
+                    </map>
+                </list>
+            </property>
+
+
+        </bean>
+
+    <bean id="myStudent" class="com.wangzhao.di04.Student">
+        <constructor-arg index="0" value="李四"></constructor-arg>
+        <constructor-arg index="1" value="20"></constructor-arg>
+        <constructor-arg index="2" ref="mySchool"></constructor-arg>
+    </bean>
+
+    <bean id="mySchool" class="com.wangzhao.di04.School">
+        <property name="name" value="西安邮电"></property>
+        <property name="address" value="西安"></property>
+    </bean>
+</beans>

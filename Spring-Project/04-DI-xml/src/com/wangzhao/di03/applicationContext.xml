@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+            构造注入：Spring调用类的有参构造方法，在构造方法中给属性赋值
+            一个构造方法的参数对应一个<constructor-arg>标签
+    -->
+
+    <!-- 构造注入，使用name属性-->
+    <bean id="myStudent" class="com.wangzhao.di03.Student">
+            <!--
+                    构造注入：使用name属性
+                    name：构造的形参名
+                    value: 简单类型参数的值
+                    ref: 引用类型参数的值
+            -->
+        <constructor-arg name="name" value="张三"></constructor-arg>
+        <constructor-arg name="age" value="20"></constructor-arg>
+        <constructor-arg name="school" ref="mySchool"></constructor-arg>
+    </bean>
+
+    <!-- 构造注入，使用index属性 -->
+    <bean id="myStudent2" class="com.wangzhao.di03.Student">
+        <!--
+                构造注入：使用index属性
+                index：表示构造方法的参数位置，从0开始
+                value: 简单类型参数的值
+                ref: 引用类型参数的值
+        -->
+        <constructor-arg index="0" value="李四"></constructor-arg>
+        <constructor-arg index="1" value="20"></constructor-arg>
+        <constructor-arg index="2" ref="mySchool"></constructor-arg>
+    </bean>
+
+    <bean id="mySchool" class="com.wangzhao.di03.School">
+        <property name="name" value="西安邮电"></property>
+        <property name="address" value="西安"></property>
+    </bean>
+
+</beans>
