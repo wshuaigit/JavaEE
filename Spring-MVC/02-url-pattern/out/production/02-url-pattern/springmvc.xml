@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+        <!--
+            声明处理器对象，让它处理请求
+            class:处理器类的全限定性类名
+            id:指定请求的uri（请求的地址），需要以“/”开头
+                “/”只是表示当前对象是能处理用户请求的，可以区分普通的bean还是处理器对象
+        -->
+        <bean id="/some.do" class="com.wangzhao.controllers.MyController"/>
+
+        <!-- 声明视图解析器对象：框架提供的类，处理视图的
+             实现ViewResolver接口的类叫做视图解析器
+        -->
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <!-- 指定前缀，表示视图文件的前缀-->
+            <property name="prefix" value="/WEB-INF/jsp/" />
+            <!-- 指定后置，表示视图文件的后缀-->
+            <property name="suffix" value=".jsp" />
+        </bean>
+</beans> 

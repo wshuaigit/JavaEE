@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="26-SSM2">
+    <output-path>E:/war/26-SSM2</output-path>
+    <root id="archive" name="26-SSM2.war">
+      <element id="dir-copy" path="$PROJECT_DIR$" />
+    </root>
+  </artifact>
+</component>

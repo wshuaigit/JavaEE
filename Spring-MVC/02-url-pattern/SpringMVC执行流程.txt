@@ -1,0 +1,44 @@
+1、由中央调度器接受请求
+2、中央调度器把请求交给了处理器映射器
+
+   处理器映射器：是一些类，他们需要实现HandlerMapping接口
+   处理器映射器作用：根据请求的信息，找到处理此请求的处理器
+                     对象。也就是根据some.do 找到的
+                     MyController对象保存到“处理器执行链”的对象中。
+3、中央调度器把“处理器执行链”的处理器对象 MyController,交给处理器的适配器
+
+    处理器适配器：是一些类，需要实现HandlerAdapter接口。
+    处理器适配器作用：根据处理器对象找到对应的处理器适配器对象（相当于根据电脑型号找合适的电 源）。
+                      每一个处理器接口都有一个适配器对象
+4、中央调度器，根据找到的处理器适配器。
+
+    通过这个处理器适配器执行处理器方法（调用MyController  的 handlerRequest（）方法），处理器调用完成后，会得到ModelAndView（数据和视图）
+5、中央调度器把处理后的ModelAndView交给了视图解析器
+    视图解析器：是一些类，需要实现ViewResovler接口
+    视图解析器作用：根据它的前缀，后缀，组成成图的完整路径，并创建视图文件的对应视图对象。在框架中，视图是用View接口表示的。
+
+
+tomcat启动时所做的事：
+    创建中央调度器对象;
+            中央调度器对象创建时执行以下操作：
+                1、创建SpringMVC的容器对象 WebApplicationContext
+                   wac = createWebApplicationContext(rootContext);
+
+                2、把创建的容器对象，放入到ServletContext
+                   attrName = org.springframework.web.servlet.FrameworkServlet.CONTEXT.springmvc;
+                   getServletContext().setAttribute(attrName, wac);
+
+中央调度器处理请求和响应都发生在 doDispatch(request, response);
+
+1、处理器映射器：
+    org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping
+    org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping
+
+    使用的是 BeanNameUrlHandlerMapping
+
+2、处理器的适配器：
+    org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter
+    org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter
+    org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter
+
+    使用的是 SimpleControllerHandlerAdapter ，用来处理Controller接口的

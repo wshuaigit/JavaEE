@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+           version="3.0">
+
+    <!-- 注册SpringMVC的核心对象DispatherServlet(中央调度器) -->
+
+    <!-- /WEB-INF/springmvc-servlet.xml
+         DispatcherServlet在创建对象的时候，在init()方法中会创建SpringMVC的容器对象
+         WebApplicationContext，创建容器的时候会读取配置文件，创建配置文件中的所有bean对象
+         默认读取的配置文件的位置是/WEB-INF,默认的文件名称是<servlet-name>-servlet.xml
+    -->
+    <servlet>
+        <servlet-name>springmvc</servlet-name>
+        <!-- springmvc.jar -->
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 自定义SpringMVC配置文件的位置-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:springmvc.xml</param-value>
+        </init-param>
+        <!-- 在服务器启动的时候创建对象-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <!--
+                url-pattern  是把请求交给某个Servlet处理，我们现在要做的是把用户的请求交给SpringMVC框架中的核心对象
+                中央调度器，交给中央调度器的处理的请求才能使用SpringMVC框架
+                中央调度器，是SpringMVC框架的入口
+
+                url-pattern的配置方式
+                    1.拓展方式：*.xxx;xxx是自定义的扩展名，例如*.do，*.action,*.mvc的等等。不能使用*.jsp
+                        http://localhost:8080/myweb/some.do
+                        http://localhost:8080/myweb/addUser.do
+                    2.使用斜杠“/”
+        -->
+        <url-pattern>*.do</url-pattern>
+
+    </servlet-mapping>
+</web-app>
