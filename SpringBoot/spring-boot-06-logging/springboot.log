@@ -1,0 +1,17 @@
+2019-04-25 14:01:27.261  INFO 6465 --- [main] .w.s.SpringBoot06LoggingApplicationTests : Starting SpringBoot06LoggingApplicationTests on wangzhao with PID 6465 (started by wangzhao in /home/wangzhao/IdeaProjects/SpringBoot/spring-boot-06-logging)
+2019-04-25 14:01:27.273 DEBUG 6465 --- [main] .w.s.SpringBoot06LoggingApplicationTests : Running with Spring Boot v1.5.20.RELEASE, Spring v4.3.23.RELEASE
+2019-04-25 14:01:27.277  INFO 6465 --- [main] .w.s.SpringBoot06LoggingApplicationTests : No active profile set, falling back to default profiles: default
+2019-04-25 14:01:27.390  INFO 6465 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@20d525: startup date [Thu Apr 25 14:01:27 CST 2019]; root of context hierarchy
+2019-04-25 14:01:30.391  INFO 6465 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@20d525: startup date [Thu Apr 25 14:01:27 CST 2019]; root of context hierarchy
+2019-04-25 14:01:30.480  INFO 6465 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-25 14:01:30.482  INFO 6465 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-04-25 14:01:30.522  INFO 6465 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-25 14:01:30.523  INFO 6465 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-25 14:01:30.575  INFO 6465 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-04-25 14:01:30.766  INFO 6465 --- [main] .w.s.SpringBoot06LoggingApplicationTests : Started SpringBoot06LoggingApplicationTests in 4.182 seconds (JVM running for 5.616)
+2019-04-25 14:01:30.828 TRACE 6465 --- [main] .w.s.SpringBoot06LoggingApplicationTests : 这是trace日志...
+2019-04-25 14:01:30.829 DEBUG 6465 --- [main] .w.s.SpringBoot06LoggingApplicationTests : 这是debug日志...
+2019-04-25 14:01:30.829  INFO 6465 --- [main] .w.s.SpringBoot06LoggingApplicationTests : 这是info日志...
+2019-04-25 14:01:30.829  WARN 6465 --- [main] .w.s.SpringBoot06LoggingApplicationTests : 这是warn日志...
+2019-04-25 14:01:30.829 ERROR 6465 --- [main] .w.s.SpringBoot06LoggingApplicationTests : 这是error日志...
+2019-04-25 14:01:30.849  INFO 6465 --- [Thread-2] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@20d525: startup date [Thu Apr 25 14:01:27 CST 2019]; root of context hierarchy
